@@ -1,0 +1,9 @@
+/build/
+/cmake-build-*/
+.vs/
+.idea/
+*.user
+*.suo
+*.vcxproj*
+*.sln
+imgui.ini

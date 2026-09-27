@@ -1,0 +1,10 @@
+{
+  "app.title": "imgui UI Designer",
+  "menu.file": "File",
+  "menu.load": "Load",
+  "menu.save": "Save",
+  "toolbar.load": "Load",
+  "toolbar.save": "Save",
+  "toolbar.fit": "Fit",
+  "toolbar.language": "Language"
+}

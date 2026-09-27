@@ -1,0 +1,165 @@
+{
+  "root": {
+    "children": [
+      {
+        "fontSize": 20.0,
+        "horizontalAlignment": "left",
+        "id": "title",
+        "layout": {
+          "height": 32.0,
+          "mode": "absolute",
+          "spacing": 0.0,
+          "width": 360.0,
+          "x": 0.0,
+          "y": 0.0
+        },
+        "style": {
+          "background": "#1F242E",
+          "border": "#475261",
+          "borderWidth": 0.0,
+          "clip": false,
+          "opacity": 1.0,
+          "paddingBottom": 0.0,
+          "paddingLeft": 0.0,
+          "paddingRight": 0.0,
+          "paddingTop": 0.0,
+          "radius": 0.0,
+          "shadow": 0.0,
+          "textColor": "#EBF0F7"
+        },
+        "text": "Scrollable document",
+        "type": "Text",
+        "verticalAlignment": "top"
+      },
+      {
+        "id": "item-1",
+        "layout": {
+          "height": 125.23013305664063,
+          "mode": "absolute",
+          "spacing": 0.0,
+          "width": 1.0,
+          "x": 46.93199920654297,
+          "y": -46.722999572753906
+        },
+        "style": {
+          "background": "#374151",
+          "border": "#475261",
+          "borderWidth": 0.0,
+          "clip": false,
+          "opacity": 1.0,
+          "paddingBottom": 0.0,
+          "paddingLeft": 0.0,
+          "paddingRight": 0.0,
+          "paddingTop": 0.0,
+          "radius": 8.0,
+          "shadow": 10.5,
+          "textColor": "#EBF0F7"
+        },
+        "type": "Box"
+      },
+      {
+        "id": "item-2",
+        "layout": {
+          "height": 125.8328857421875,
+          "mode": "absolute",
+          "spacing": 0.0,
+          "width": 1.0,
+          "x": -250.83018493652344,
+          "y": 85.2575454711914
+        },
+        "style": {
+          "background": "#374151",
+          "border": "#475261",
+          "borderWidth": 0.0,
+          "clip": false,
+          "opacity": 1.0,
+          "paddingBottom": 0.0,
+          "paddingLeft": 0.0,
+          "paddingRight": 0.0,
+          "paddingTop": 0.0,
+          "radius": 122.25,
+          "shadow": 12.0,
+          "textColor": "#EBF0F7"
+        },
+        "type": "Box"
+      },
+      {
+        "id": "item-3",
+        "layout": {
+          "height": 90.0,
+          "mode": "absolute",
+          "spacing": 0.0,
+          "width": 360.0,
+          "x": 1.2356165647506714,
+          "y": 0.0
+        },
+        "style": {
+          "background": "#374151",
+          "border": "#0A0C0E",
+          "borderWidth": 4.0,
+          "clip": false,
+          "opacity": 0.4399999976158142,
+          "paddingBottom": 0.0,
+          "paddingLeft": 0.0,
+          "paddingRight": 0.0,
+          "paddingTop": 0.0,
+          "radius": 8.0,
+          "shadow": 0.0,
+          "textColor": "#EBF0F7"
+        },
+        "type": "Box"
+      },
+      {
+        "id": "item-4",
+        "layout": {
+          "height": 90.0,
+          "mode": "absolute",
+          "spacing": 0.0,
+          "width": 360.0,
+          "x": -127.26850128173828,
+          "y": 189.04933166503906
+        },
+        "style": {
+          "background": "#374151",
+          "border": "#475261",
+          "borderWidth": 0.0,
+          "clip": false,
+          "opacity": 1.0,
+          "paddingBottom": 0.0,
+          "paddingLeft": 0.0,
+          "paddingRight": 0.0,
+          "paddingTop": 0.0,
+          "radius": 8.0,
+          "shadow": 0.0,
+          "textColor": "#EBF0F7"
+        },
+        "type": "Box"
+      }
+    ],
+    "id": "scroll",
+    "layout": {
+      "height": 300.0,
+      "mode": "absolute",
+      "spacing": 8.0,
+      "width": 400.0,
+      "x": 0.0,
+      "y": -28.0
+    },
+    "style": {
+      "background": "#C6C6C6",
+      "border": "#475261",
+      "borderWidth": 26.75,
+      "clip": false,
+      "opacity": 1.0,
+      "paddingBottom": 0.0,
+      "paddingLeft": 75.0,
+      "paddingRight": 70.0,
+      "paddingTop": 85.0,
+      "radius": 13.75,
+      "shadow": 8.75,
+      "textColor": "#EBF0F7"
+    },
+    "type": "VerticalScroll"
+  },
+  "version": 1
+}

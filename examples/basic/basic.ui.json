@@ -1,0 +1,809 @@
+{
+  "root": {
+    "children": [
+      {
+        "children": [
+          {
+            "fit": "contain",
+            "id": "Logo",
+            "layout": {
+              "height": 46.0,
+              "mode": "absolute",
+              "spacing": 0.0,
+              "width": 46.0,
+              "x": 0.0,
+              "y": 0.0
+            },
+            "source": "assets/logo.png",
+            "style": {
+              "background": "#1F242E",
+              "border": "#475261",
+              "borderWidth": 0.0,
+              "clip": false,
+              "opacity": 1.0,
+              "paddingBottom": 0.0,
+              "paddingLeft": 0.0,
+              "paddingRight": 0.0,
+              "paddingTop": 0.0,
+              "radius": 0.0,
+              "shadow": 0.0,
+              "textColor": "#EBF0F7"
+            },
+            "type": "Image"
+          },
+          {
+            "fontSize": 30.0,
+            "horizontalAlignment": "left",
+            "id": "Title",
+            "layout": {
+              "height": 40.0,
+              "mode": "absolute",
+              "spacing": 0.0,
+              "width": 320.0,
+              "x": 0.0,
+              "y": 0.0
+            },
+            "style": {
+              "background": "#1F242E",
+              "border": "#475261",
+              "borderWidth": 0.0,
+              "clip": false,
+              "opacity": 1.0,
+              "paddingBottom": 0.0,
+              "paddingLeft": 0.0,
+              "paddingRight": 0.0,
+              "paddingTop": 0.0,
+              "radius": 0.0,
+              "shadow": 0.0,
+              "textColor": "#202630"
+            },
+            "text": "imgui UI Designer",
+            "type": "Text",
+            "verticalAlignment": "top"
+          },
+          {
+            "id": "HeaderSpring",
+            "layout": {
+              "height": 0.0,
+              "mode": "absolute",
+              "spacing": 0.0,
+              "width": 0.0,
+              "x": 0.0,
+              "y": 0.0
+            },
+            "style": {
+              "background": "#1F242E",
+              "border": "#475261",
+              "borderWidth": 0.0,
+              "clip": false,
+              "opacity": 1.0,
+              "paddingBottom": 0.0,
+              "paddingLeft": 0.0,
+              "paddingRight": 0.0,
+              "paddingTop": 0.0,
+              "radius": 0.0,
+              "shadow": 0.0,
+              "textColor": "#EBF0F7"
+            },
+            "type": "HorizontalSpring"
+          },
+          {
+            "fontSize": 15.0,
+            "horizontalAlignment": "left",
+            "id": "Subtitle",
+            "layout": {
+              "height": 32.0,
+              "mode": "absolute",
+              "spacing": 0.0,
+              "width": 460.0,
+              "x": 0.0,
+              "y": 0.0
+            },
+            "style": {
+              "background": "#1F242E",
+              "border": "#475261",
+              "borderWidth": 0.0,
+              "clip": false,
+              "opacity": 1.0,
+              "paddingBottom": 0.0,
+              "paddingLeft": 0.0,
+              "paddingRight": 0.0,
+              "paddingTop": 0.0,
+              "radius": 0.0,
+              "shadow": 0.0,
+              "textColor": "#647084"
+            },
+            "text": "One document tree - shared preview and runtime",
+            "type": "Text",
+            "verticalAlignment": "top"
+          }
+        ],
+        "id": "Header",
+        "layout": {
+          "height": 82.0,
+          "mode": "horizontal",
+          "spacing": 20.0,
+          "width": 1216.0,
+          "x": 0.0,
+          "y": 0.0
+        },
+        "style": {
+          "background": "#FFFFFF",
+          "border": "#DDE1E8",
+          "borderWidth": 1.0,
+          "clip": false,
+          "opacity": 1.0,
+          "paddingBottom": 0.0,
+          "paddingLeft": 20.0,
+          "paddingRight": 20.0,
+          "paddingTop": 18.0,
+          "radius": 12.0,
+          "shadow": 0.0,
+          "textColor": "#EBF0F7"
+        },
+        "type": "Box"
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "fontSize": 21.0,
+                "horizontalAlignment": "left",
+                "id": "CardHeading",
+                "layout": {
+                  "height": 32.0,
+                  "mode": "absolute",
+                  "spacing": 0.0,
+                  "width": 530.0,
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "style": {
+                  "background": "#1F242E",
+                  "border": "#475261",
+                  "borderWidth": 0.0,
+                  "clip": false,
+                  "opacity": 1.0,
+                  "paddingBottom": 0.0,
+                  "paddingLeft": 0.0,
+                  "paddingRight": 0.0,
+                  "paddingTop": 0.0,
+                  "radius": 0.0,
+                  "shadow": 0.0,
+                  "textColor": "#202630"
+                },
+                "text": "Document primitives",
+                "type": "Text",
+                "verticalAlignment": "top"
+              },
+              {
+                "fontSize": 16.0,
+                "horizontalAlignment": "left",
+                "id": "CardCopy",
+                "layout": {
+                  "height": 50.0,
+                  "mode": "absolute",
+                  "spacing": 0.0,
+                  "width": 530.0,
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "style": {
+                  "background": "#1F242E",
+                  "border": "#475261",
+                  "borderWidth": 0.0,
+                  "clip": false,
+                  "opacity": 1.0,
+                  "paddingBottom": 0.0,
+                  "paddingLeft": 0.0,
+                  "paddingRight": 0.0,
+                  "paddingTop": 0.0,
+                  "radius": 0.0,
+                  "shadow": 0.0,
+                  "textColor": "#566174"
+                },
+                "text": "Box, Text, and Image are small primitives. Composite controls can be assembled from this shared tree.",
+                "type": "Text",
+                "verticalAlignment": "top"
+              },
+              {
+                "fit": "contain",
+                "id": "ImagePlaceholder",
+                "layout": {
+                  "height": 180.0,
+                  "mode": "absolute",
+                  "spacing": 0.0,
+                  "width": 520.0,
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "source": "Replace with a project image",
+                "style": {
+                  "background": "#1F242E",
+                  "border": "#475261",
+                  "borderWidth": 0.0,
+                  "clip": false,
+                  "opacity": 1.0,
+                  "paddingBottom": 0.0,
+                  "paddingLeft": 0.0,
+                  "paddingRight": 0.0,
+                  "paddingTop": 0.0,
+                  "radius": 0.0,
+                  "shadow": 0.0,
+                  "textColor": "#EBF0F7"
+                },
+                "type": "Image"
+              },
+              {
+                "children": [
+                  {
+                    "fontSize": 15.0,
+                    "horizontalAlignment": "left",
+                    "id": "SpringLabel",
+                    "layout": {
+                      "height": 24.0,
+                      "mode": "absolute",
+                      "spacing": 0.0,
+                      "width": 170.0,
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    "style": {
+                      "background": "#1F242E",
+                      "border": "#475261",
+                      "borderWidth": 0.0,
+                      "clip": false,
+                      "opacity": 1.0,
+                      "paddingBottom": 0.0,
+                      "paddingLeft": 0.0,
+                      "paddingRight": 0.0,
+                      "paddingTop": 0.0,
+                      "radius": 0.0,
+                      "shadow": 0.0,
+                      "textColor": "#27364A"
+                    },
+                    "text": "Horizontal spring",
+                    "type": "Text",
+                    "verticalAlignment": "top"
+                  },
+                  {
+                    "id": "Spring",
+                    "layout": {
+                      "height": 0.0,
+                      "mode": "absolute",
+                      "spacing": 0.0,
+                      "width": 0.0,
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    "style": {
+                      "background": "#1F242E",
+                      "border": "#475261",
+                      "borderWidth": 0.0,
+                      "clip": false,
+                      "opacity": 1.0,
+                      "paddingBottom": 0.0,
+                      "paddingLeft": 0.0,
+                      "paddingRight": 0.0,
+                      "paddingTop": 0.0,
+                      "radius": 0.0,
+                      "shadow": 0.0,
+                      "textColor": "#EBF0F7"
+                    },
+                    "type": "HorizontalSpring"
+                  },
+                  {
+                    "fontSize": 13.0,
+                    "horizontalAlignment": "left",
+                    "id": "SpringValue",
+                    "layout": {
+                      "height": 24.0,
+                      "mode": "absolute",
+                      "spacing": 0.0,
+                      "width": 180.0,
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    "style": {
+                      "background": "#1F242E",
+                      "border": "#475261",
+                      "borderWidth": 0.0,
+                      "clip": false,
+                      "opacity": 1.0,
+                      "paddingBottom": 0.0,
+                      "paddingLeft": 0.0,
+                      "paddingRight": 0.0,
+                      "paddingTop": 0.0,
+                      "radius": 0.0,
+                      "shadow": 0.0,
+                      "textColor": "#3477C5"
+                    },
+                    "text": "fills remaining space",
+                    "type": "Text",
+                    "verticalAlignment": "top"
+                  }
+                ],
+                "id": "SpringRow",
+                "layout": {
+                  "height": 48.0,
+                  "mode": "horizontal",
+                  "spacing": 0.0,
+                  "width": 530.0,
+                  "x": 17.0,
+                  "y": 0.0
+                },
+                "style": {
+                  "background": "#EEF4FC",
+                  "border": "#475261",
+                  "borderWidth": 0.0,
+                  "clip": false,
+                  "opacity": 1.0,
+                  "paddingBottom": 0.0,
+                  "paddingLeft": 12.0,
+                  "paddingRight": 12.0,
+                  "paddingTop": 12.0,
+                  "radius": 8.0,
+                  "shadow": 0.0,
+                  "textColor": "#EBF0F7"
+                },
+                "type": "Box"
+              }
+            ],
+            "id": "PreviewCard",
+            "layout": {
+              "height": 520.0,
+              "mode": "vertical",
+              "spacing": 14.0,
+              "width": 580.0,
+              "x": 0.0,
+              "y": 0.0
+            },
+            "style": {
+              "background": "#FFFFFF",
+              "border": "#DDE1E8",
+              "borderWidth": 1.0,
+              "clip": false,
+              "opacity": 1.0,
+              "paddingBottom": 0.0,
+              "paddingLeft": 22.0,
+              "paddingRight": 22.0,
+              "paddingTop": 22.0,
+              "radius": 12.0,
+              "shadow": 0.0,
+              "textColor": "#EBF0F7"
+            },
+            "type": "Box"
+          },
+          {
+            "children": [
+              {
+                "fontSize": 21.0,
+                "horizontalAlignment": "left",
+                "id": "ScrollTitle",
+                "layout": {
+                  "height": 32.0,
+                  "mode": "absolute",
+                  "spacing": 0.0,
+                  "width": 560.0,
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "style": {
+                  "background": "#1F242E",
+                  "border": "#475261",
+                  "borderWidth": 0.0,
+                  "clip": false,
+                  "opacity": 1.0,
+                  "paddingBottom": 0.0,
+                  "paddingLeft": 0.0,
+                  "paddingRight": 0.0,
+                  "paddingTop": 0.0,
+                  "radius": 0.0,
+                  "shadow": 0.0,
+                  "textColor": "#202630"
+                },
+                "text": "Vertical scroll",
+                "type": "Text",
+                "verticalAlignment": "top"
+              },
+              {
+                "fontSize": 14.0,
+                "horizontalAlignment": "left",
+                "id": "ScrollHint",
+                "layout": {
+                  "height": 42.0,
+                  "mode": "absolute",
+                  "spacing": 0.0,
+                  "width": 560.0,
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "style": {
+                  "background": "#1F242E",
+                  "border": "#475261",
+                  "borderWidth": 0.0,
+                  "clip": false,
+                  "opacity": 1.0,
+                  "paddingBottom": 0.0,
+                  "paddingLeft": 0.0,
+                  "paddingRight": 0.0,
+                  "paddingTop": 0.0,
+                  "radius": 0.0,
+                  "shadow": 0.0,
+                  "textColor": "#647084"
+                },
+                "text": "Scroll over this panel to explore content beyond the viewport.",
+                "type": "Text",
+                "verticalAlignment": "top"
+              },
+              {
+                "children": [
+                  {
+                    "fontSize": 16.0,
+                    "horizontalAlignment": "left",
+                    "id": "ItemOneText",
+                    "layout": {
+                      "height": 28.0,
+                      "mode": "absolute",
+                      "spacing": 0.0,
+                      "width": 500.0,
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    "style": {
+                      "background": "#1F242E",
+                      "border": "#475261",
+                      "borderWidth": 0.0,
+                      "clip": false,
+                      "opacity": 1.0,
+                      "paddingBottom": 0.0,
+                      "paddingLeft": 0.0,
+                      "paddingRight": 0.0,
+                      "paddingTop": 0.0,
+                      "radius": 0.0,
+                      "shadow": 0.0,
+                      "textColor": "#27364A"
+                    },
+                    "text": "Scroll item 01 - shared UIElement",
+                    "type": "Text",
+                    "verticalAlignment": "top"
+                  }
+                ],
+                "id": "ItemOne",
+                "layout": {
+                  "height": 74.0,
+                  "mode": "overlay",
+                  "spacing": 0.0,
+                  "width": 560.0,
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "style": {
+                  "background": "#F0F5FC",
+                  "border": "#475261",
+                  "borderWidth": 0.0,
+                  "clip": false,
+                  "opacity": 1.0,
+                  "paddingBottom": 0.0,
+                  "paddingLeft": 14.0,
+                  "paddingRight": 0.0,
+                  "paddingTop": 15.0,
+                  "radius": 8.0,
+                  "shadow": 0.0,
+                  "textColor": "#EBF0F7"
+                },
+                "type": "Box"
+              },
+              {
+                "children": [
+                  {
+                    "fontSize": 16.0,
+                    "horizontalAlignment": "left",
+                    "id": "ItemTwoText",
+                    "layout": {
+                      "height": 28.0,
+                      "mode": "absolute",
+                      "spacing": 0.0,
+                      "width": 500.0,
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    "style": {
+                      "background": "#1F242E",
+                      "border": "#475261",
+                      "borderWidth": 0.0,
+                      "clip": false,
+                      "opacity": 1.0,
+                      "paddingBottom": 0.0,
+                      "paddingLeft": 0.0,
+                      "paddingRight": 0.0,
+                      "paddingTop": 0.0,
+                      "radius": 0.0,
+                      "shadow": 0.0,
+                      "textColor": "#27364A"
+                    },
+                    "text": "Scroll item 02 - layout is deterministic",
+                    "type": "Text",
+                    "verticalAlignment": "top"
+                  }
+                ],
+                "id": "ItemTwo",
+                "layout": {
+                  "height": 74.0,
+                  "mode": "absolute",
+                  "spacing": 0.0,
+                  "width": 560.0,
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "style": {
+                  "background": "#F0F5FC",
+                  "border": "#475261",
+                  "borderWidth": 0.0,
+                  "clip": false,
+                  "opacity": 1.0,
+                  "paddingBottom": 0.0,
+                  "paddingLeft": 14.0,
+                  "paddingRight": 0.0,
+                  "paddingTop": 15.0,
+                  "radius": 8.0,
+                  "shadow": 0.0,
+                  "textColor": "#EBF0F7"
+                },
+                "type": "Box"
+              },
+              {
+                "children": [
+                  {
+                    "fontSize": 16.0,
+                    "horizontalAlignment": "left",
+                    "id": "ItemThreeText",
+                    "layout": {
+                      "height": 28.0,
+                      "mode": "absolute",
+                      "spacing": 0.0,
+                      "width": 500.0,
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    "style": {
+                      "background": "#1F242E",
+                      "border": "#475261",
+                      "borderWidth": 0.0,
+                      "clip": false,
+                      "opacity": 1.0,
+                      "paddingBottom": 0.0,
+                      "paddingLeft": 0.0,
+                      "paddingRight": 0.0,
+                      "paddingTop": 0.0,
+                      "radius": 0.0,
+                      "shadow": 0.0,
+                      "textColor": "#27364A"
+                    },
+                    "text": "Scroll item 03 - renderer-independent core",
+                    "type": "Text",
+                    "verticalAlignment": "top"
+                  }
+                ],
+                "id": "ItemThree",
+                "layout": {
+                  "height": 74.0,
+                  "mode": "absolute",
+                  "spacing": 0.0,
+                  "width": 560.0,
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "style": {
+                  "background": "#F0F5FC",
+                  "border": "#475261",
+                  "borderWidth": 0.0,
+                  "clip": false,
+                  "opacity": 1.0,
+                  "paddingBottom": 0.0,
+                  "paddingLeft": 14.0,
+                  "paddingRight": 0.0,
+                  "paddingTop": 15.0,
+                  "radius": 8.0,
+                  "shadow": 0.0,
+                  "textColor": "#EBF0F7"
+                },
+                "type": "Box"
+              },
+              {
+                "children": [
+                  {
+                    "fontSize": 16.0,
+                    "horizontalAlignment": "left",
+                    "id": "ItemFourText",
+                    "layout": {
+                      "height": 28.0,
+                      "mode": "absolute",
+                      "spacing": 0.0,
+                      "width": 500.0,
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    "style": {
+                      "background": "#1F242E",
+                      "border": "#475261",
+                      "borderWidth": 0.0,
+                      "clip": false,
+                      "opacity": 1.0,
+                      "paddingBottom": 0.0,
+                      "paddingLeft": 0.0,
+                      "paddingRight": 0.0,
+                      "paddingTop": 0.0,
+                      "radius": 0.0,
+                      "shadow": 0.0,
+                      "textColor": "#27364A"
+                    },
+                    "text": "Scroll item 04 - save and reload as JSON",
+                    "type": "Text",
+                    "verticalAlignment": "top"
+                  }
+                ],
+                "id": "ItemFour",
+                "layout": {
+                  "height": 74.0,
+                  "mode": "absolute",
+                  "spacing": 0.0,
+                  "width": 560.0,
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "style": {
+                  "background": "#F0F5FC",
+                  "border": "#475261",
+                  "borderWidth": 0.0,
+                  "clip": false,
+                  "opacity": 1.0,
+                  "paddingBottom": 0.0,
+                  "paddingLeft": 14.0,
+                  "paddingRight": 0.0,
+                  "paddingTop": 15.0,
+                  "radius": 8.0,
+                  "shadow": 0.0,
+                  "textColor": "#EBF0F7"
+                },
+                "type": "Box"
+              },
+              {
+                "children": [
+                  {
+                    "fontSize": 16.0,
+                    "horizontalAlignment": "left",
+                    "id": "ItemFiveText",
+                    "layout": {
+                      "height": 28.0,
+                      "mode": "absolute",
+                      "spacing": 0.0,
+                      "width": 500.0,
+                      "x": 0.0,
+                      "y": 0.0
+                    },
+                    "style": {
+                      "background": "#1F242E",
+                      "border": "#475261",
+                      "borderWidth": 0.0,
+                      "clip": false,
+                      "opacity": 1.0,
+                      "paddingBottom": 0.0,
+                      "paddingLeft": 0.0,
+                      "paddingRight": 0.0,
+                      "paddingTop": 0.0,
+                      "radius": 0.0,
+                      "shadow": 0.0,
+                      "textColor": "#27364A"
+                    },
+                    "text": "Scroll item 05 - vertical and horizontal layouts",
+                    "type": "Text",
+                    "verticalAlignment": "top"
+                  }
+                ],
+                "id": "ItemFive",
+                "layout": {
+                  "height": 74.0,
+                  "mode": "absolute",
+                  "spacing": 0.0,
+                  "width": 560.0,
+                  "x": 0.0,
+                  "y": 0.0
+                },
+                "style": {
+                  "background": "#F0F5FC",
+                  "border": "#475261",
+                  "borderWidth": 0.0,
+                  "clip": false,
+                  "opacity": 1.0,
+                  "paddingBottom": 0.0,
+                  "paddingLeft": 14.0,
+                  "paddingRight": 0.0,
+                  "paddingTop": 15.0,
+                  "radius": 8.0,
+                  "shadow": 0.0,
+                  "textColor": "#EBF0F7"
+                },
+                "type": "Box"
+              }
+            ],
+            "id": "VerticalScrollDemo",
+            "layout": {
+              "height": 520.0,
+              "mode": "vertical",
+              "spacing": 10.0,
+              "width": 616.0,
+              "x": 0.0,
+              "y": 0.0
+            },
+            "style": {
+              "background": "#FFFFFF",
+              "border": "#DDE1E8",
+              "borderWidth": 1.0,
+              "clip": true,
+              "opacity": 1.0,
+              "paddingBottom": 0.0,
+              "paddingLeft": 18.0,
+              "paddingRight": 18.0,
+              "paddingTop": 18.0,
+              "radius": 12.0,
+              "shadow": 0.0,
+              "textColor": "#EBF0F7"
+            },
+            "type": "VerticalScroll"
+          }
+        ],
+        "id": "Content",
+        "layout": {
+          "height": 560.0,
+          "mode": "horizontal",
+          "spacing": 20.0,
+          "width": 1216.0,
+          "x": 0.0,
+          "y": 0.0
+        },
+        "style": {
+          "background": "#F5F6F8",
+          "border": "#475261",
+          "borderWidth": 0.0,
+          "clip": false,
+          "opacity": 1.0,
+          "paddingBottom": 0.0,
+          "paddingLeft": 0.0,
+          "paddingRight": 0.0,
+          "paddingTop": 20.0,
+          "radius": 0.0,
+          "shadow": 0.0,
+          "textColor": "#EBF0F7"
+        },
+        "type": "Box"
+      }
+    ],
+    "id": "root",
+    "layout": {
+      "height": 720.0,
+      "mode": "vertical",
+      "spacing": 0.0,
+      "width": 1280.0,
+      "x": 0.0,
+      "y": 0.0
+    },
+    "style": {
+      "background": "#F5F6F8",
+      "border": "#475261",
+      "borderWidth": 0.0,
+      "clip": false,
+      "opacity": 1.0,
+      "paddingBottom": 24.0,
+      "paddingLeft": 32.0,
+      "paddingRight": 32.0,
+      "paddingTop": 24.0,
+      "radius": 0.0,
+      "shadow": 0.0,
+      "textColor": "#EBF0F7"
+    },
+    "type": "Box"
+  },
+  "version": 1
+}

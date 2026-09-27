@@ -1,0 +1,10 @@
+{
+  "app.title": "imgui UI 设计器",
+  "menu.file": "文件",
+  "menu.load": "加载",
+  "menu.save": "保存",
+  "toolbar.load": "加载",
+  "toolbar.save": "保存",
+  "toolbar.fit": "适应",
+  "toolbar.language": "语言"
+}
