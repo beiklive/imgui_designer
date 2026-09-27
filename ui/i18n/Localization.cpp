@@ -14,10 +14,17 @@ void Localization::installDefaults() {
     };
     add("app.title", "imgui UI Designer", "imgui UI 设计器");
     add("menu.file", "File", "文件"); add("menu.load", "Load", "加载"); add("menu.save", "Save", "保存");
+    add("menu.settings", "Settings", "设置"); add("settings.language", "Language", "语言");
     add("toolbar.load", "Load", "加载"); add("toolbar.save", "Save", "保存"); add("toolbar.zoom_out", "-", "-");
     add("toolbar.fit", "Fit", "适应"); add("toolbar.zoom_in", "+", "+"); add("toolbar.language", "Language", "语言");
     add("language.english", "English", "英文"); add("language.chinese", "Chinese", "中文");
     add("panel.hierarchy", "Hierarchy", "层级"); add("panel.canvas", "Canvas", "画布"); add("panel.inspector", "Inspector", "检查器");
+    add("panel.controls", "Controls", "控件"); add("controls.new_canvas", "New canvas", "新建画布"); add("controls.primitives", "Primitives", "基础控件");
+    add("controls.add_box", "Add Box", "添加 Box"); add("controls.add_text", "Add Text", "添加 Text"); add("controls.add_label", "Add Label", "添加 Label");
+    add("controls.add_image", "Add Image", "添加 Image"); add("controls.import", "Import component JSON", "导入控件 JSON"); add("controls.import_button", "Import", "导入");
+    add("tabs.close", "Close", "关闭"); add("tabs.new", "New", "新建"); add("tabs.run", "Run", "运行"); add("tabs.pause", "Pause", "暂停");
+    add("tabs.design", "Design", "设计"); add("tabs.running", "Running", "运行中"); add("controls.delete", "Delete", "删除");
+    add("error.import", "Could not import component", "无法导入控件"); add("error.delete_root", "The root element cannot be deleted", "根节点不能删除");
     add("inspector.select_element", "Select an element to inspect.", "请选择一个元素进行检查。");
     add("inspector.id", "ID", "标识"); add("inspector.type", "Type", "类型"); add("inspector.layout", "Layout", "布局");
     add("inspector.mode", "Mode", "模式"); add("layout.absolute", "Absolute", "绝对"); add("layout.horizontal", "Horizontal", "水平");

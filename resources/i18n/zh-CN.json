@@ -7,4 +7,13 @@
   "toolbar.save": "保存",
   "toolbar.fit": "适应",
   "toolbar.language": "语言"
+  ,"panel.controls": "控件",
+  "controls.new_canvas": "新建画布",
+  "controls.add_box": "添加 Box",
+  "controls.add_text": "添加 Text",
+  "controls.add_label": "添加 Label",
+  "controls.add_image": "添加 Image",
+  "controls.import_button": "导入",
+  "tabs.run": "运行",
+  "tabs.pause": "暂停"
 }

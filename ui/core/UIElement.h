@@ -19,6 +19,7 @@ public:
     UIElement* parent() const { return parent_; }
     UIElement& addChild(std::unique_ptr<UIElement> child);
     bool removeChild(UIElement* child);
+    void clearChildren();
     const std::vector<std::unique_ptr<UIElement>>& children() const { return children_; }
 
     std::string id;
@@ -29,6 +30,7 @@ public:
     UIRect computedRect;
     std::string text;
     std::string source;
+    std::string reference;
     std::string fit = "contain";
     std::string horizontalAlignment = "left";
     std::string verticalAlignment = "top";

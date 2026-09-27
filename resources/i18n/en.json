@@ -7,4 +7,13 @@
   "toolbar.save": "Save",
   "toolbar.fit": "Fit",
   "toolbar.language": "Language"
+  ,"panel.controls": "Controls",
+  "controls.new_canvas": "New canvas",
+  "controls.add_box": "Add Box",
+  "controls.add_text": "Add Text",
+  "controls.add_label": "Add Label",
+  "controls.add_image": "Add Image",
+  "controls.import_button": "Import",
+  "tabs.run": "Run",
+  "tabs.pause": "Pause"
 }

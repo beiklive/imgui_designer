@@ -30,7 +30,7 @@ void InspectorPanel::draw(ui::UIElement* e, ui::Localization& localization) {
     ImGui::DragFloat((localization.tr("inspector.padding_right")+"##padding_right").c_str(), &e->style.paddingRight, 1, 0, 256);
     ImGui::DragFloat((localization.tr("inspector.padding_top")+"##padding_top").c_str(), &e->style.paddingTop, 1, 0, 256);
     ImGui::DragFloat((localization.tr("inspector.padding_bottom")+"##padding_bottom").c_str(), &e->style.paddingBottom, 1, 0, 256);
-    if (e->type == "Text") {
+    if (e->type == "Text" || e->type == "Label") {
         ImGui::SeparatorText(localization.tr("inspector.text").c_str()); char value[1024]{}; std::snprintf(value, sizeof(value), "%s", e->text.c_str());
         if (ImGui::InputTextMultiline(localization.tr("inspector.content").c_str(), value, sizeof(value), ImVec2(-1, 70))) e->text = value;
         ImGui::DragFloat((localization.tr("inspector.font_size")+"##font_size").c_str(), &e->fontSize, .5f, 6, 256); colorEdit((localization.tr("inspector.text_color")+"##text_color").c_str(), e->style.textColor);

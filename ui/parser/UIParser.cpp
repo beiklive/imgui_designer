@@ -1,11 +1,13 @@
 #include "UIParser.h"
 #include "../widgets/Box.h"
 #include "../widgets/Text.h"
+#include "../widgets/Label.h"
 #include "../widgets/Image.h"
 #include "../containers/ScrollContainer.h"
 #include "../layout/UISpring.h"
 #include <fstream>
 #include <stdexcept>
+#include <filesystem>
 
 namespace ui {
 static UIColor colorFromJson(const nlohmann::json& j, UIColor fallback) {
@@ -22,34 +24,50 @@ UIDocument UIParser::parse(const nlohmann::json& json) const {
     if (!json.is_object() || !json.contains("root")) throw std::runtime_error("UI document requires a root element");
     UIDocument document;
     document.version = json.value("version", 1);
-    document.root = parseElement(json.at("root"));
+    document.root = parseElement(json.at("root"), {});
     return document;
 }
 UIDocument UIParser::load(const std::string& path) const {
+    UIDocument document;
     std::ifstream file(path);
     if (!file) throw std::runtime_error("Cannot open UI document: " + path);
     nlohmann::json json; file >> json;
-    return parse(json);
+    if (!json.is_object() || !json.contains("root")) throw std::runtime_error("UI document requires a root element");
+    document.version = json.value("version", 1);
+    document.root = parseElement(json.at("root"), std::filesystem::path(path).parent_path().string());
+    return document;
 }
-std::unique_ptr<UIElement> UIParser::parseElement(const nlohmann::json& j) const {
+std::unique_ptr<UIElement> UIParser::parseElement(const nlohmann::json& j, const std::string& baseDirectory) const {
     const auto type = j.value("type", std::string("Box"));
-    if (type != "Box" && type != "Text" && type != "Image" && type != "HorizontalSpring" && type != "VerticalSpring" && type != "VerticalScroll" && type != "HorizontalScroll")
+    if (type != "Box" && type != "Text" && type != "Label" && type != "Image" && type != "Reference" && type != "HorizontalSpring" && type != "VerticalSpring" && type != "VerticalScroll" && type != "HorizontalScroll")
         throw std::runtime_error("Unsupported element type: " + type);
     std::unique_ptr<UIElement> e;
-    if (type == "Box") e = std::make_unique<Box>();
+    if (type == "Reference" || j.contains("reference")) {
+        const auto reference = j.value("reference", std::string{});
+        if (reference.empty()) throw std::runtime_error("Reference element requires a reference path");
+        std::filesystem::path referencePath(reference);
+        if (referencePath.is_relative() && !baseDirectory.empty()) referencePath = std::filesystem::path(baseDirectory) / referencePath;
+        auto referenced = load(referencePath.lexically_normal().string());
+        e = std::move(referenced.root);
+        e->reference = reference;
+    }
+    else if (type == "Box") e = std::make_unique<Box>();
     else if (type == "Text") e = std::make_unique<Text>();
+    else if (type == "Label") e = std::make_unique<Label>();
     else if (type == "Image") e = std::make_unique<Image>();
     else if (type == "HorizontalSpring") e = std::make_unique<HorizontalSpring>();
     else if (type == "VerticalSpring") e = std::make_unique<VerticalSpring>();
     else if (type == "VerticalScroll") e = std::make_unique<VerticalScroll>();
-    else e = std::make_unique<HorizontalScroll>();
-    e->id = j.value("id", std::string{});
-    e->text = j.value("text", std::string{});
-    e->source = j.value("source", std::string{});
-    e->fit = j.value("fit", std::string("contain"));
-    e->horizontalAlignment = j.value("horizontalAlignment", std::string("left"));
-    e->verticalAlignment = j.value("verticalAlignment", std::string("top"));
-    e->fontSize = j.value("fontSize", 18.0f);
+    else if (type == "HorizontalScroll") e = std::make_unique<HorizontalScroll>();
+    else e = std::make_unique<Box>();
+    if (j.contains("id")) e->id = j.value("id", std::string{});
+    if (j.contains("text")) e->text = j.value("text", std::string{});
+    if (j.contains("source")) e->source = j.value("source", std::string{});
+    if (j.contains("reference")) e->reference = j.value("reference", std::string{});
+    if (j.contains("fit")) e->fit = j.value("fit", std::string("contain"));
+    if (j.contains("horizontalAlignment")) e->horizontalAlignment = j.value("horizontalAlignment", std::string("left"));
+    if (j.contains("verticalAlignment")) e->verticalAlignment = j.value("verticalAlignment", std::string("top"));
+    if (j.contains("fontSize")) e->fontSize = j.value("fontSize", 18.0f);
     if (j.contains("layout")) {
         const auto& l = j.at("layout");
         const auto mode = l.value("mode", std::string("absolute"));
@@ -72,7 +90,10 @@ std::unique_ptr<UIElement> UIParser::parseElement(const nlohmann::json& j) const
         e->style.paddingLeft = s.value("paddingLeft", 0.0f); e->style.paddingRight = s.value("paddingRight", 0.0f);
         e->style.paddingTop = s.value("paddingTop", 0.0f); e->style.paddingBottom = s.value("paddingBottom", 0.0f);
     }
-    if (j.contains("children")) for (const auto& child : j.at("children")) e->addChild(parseElement(child));
+    if (j.contains("children")) {
+        if (!e->children().empty()) e->clearChildren();
+        for (const auto& child : j.at("children")) e->addChild(parseElement(child, baseDirectory));
+    }
     return e;
 }
 }

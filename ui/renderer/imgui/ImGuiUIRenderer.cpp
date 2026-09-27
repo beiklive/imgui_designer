@@ -29,7 +29,7 @@ void ImGuiUIRenderer::renderElement(UIElement& e) {
         bg.a*=e.style.opacity; border.a*=e.style.opacity;
         box(r, bg, border, e.style.radius, e.style.borderWidth, e.style.shadow * e.style.opacity);
     }
-    else if (e.type == "Text") { auto color=e.style.textColor; color.a*=e.style.opacity; text(r, e.text.c_str(), e.fontSize, color, e.horizontalAlignment.c_str(), e.verticalAlignment.c_str()); }
+    else if (e.type == "Text" || e.type == "Label") { auto color=e.style.textColor; color.a*=e.style.opacity; text(r, e.text.c_str(), e.fontSize, color, e.horizontalAlignment.c_str(), e.verticalAlignment.c_str()); }
     else if (e.type == "Image") image(r, e.source.c_str(), e.fit.c_str(), e.style.opacity, e.horizontalAlignment.c_str(), e.verticalAlignment.c_str());
     for (const auto& child : e.children()) renderElement(*child);
     if (e.scrollable || e.style.clip) popClip();

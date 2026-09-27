@@ -38,6 +38,7 @@ add_library(ui_core STATIC
     ui/core/UIElement.cpp
     ui/widgets/Box.cpp
     ui/widgets/Text.cpp
+    ui/widgets/Label.cpp
     ui/widgets/Image.cpp
     ui/containers/ScrollContainer.cpp
     ui/layout/UILayoutEngine.cpp
@@ -60,17 +61,19 @@ target_link_libraries(ui_renderer_imgui PUBLIC ui_core imgui)
 add_executable(imguiUIDesigner
     src/main.cpp
     designer/DesignerApplication.cpp
+    designer/DesignerSettings.cpp
     designer/Canvas/DesignCanvas.cpp
     designer/Hierarchy/HierarchyPanel.cpp
     designer/Inspector/InspectorPanel.cpp
-    designer/Toolbar/DesignerToolbar.cpp)
+    designer/Toolbar/DesignerToolbar.cpp
+    designer/Controls/ControlPalette.cpp)
 target_include_directories(imguiUIDesigner PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(imguiUIDesigner PRIVATE ui_core ui_renderer_imgui imgui glfw OpenGL::GL)
 target_compile_definitions(imguiUIDesigner PRIVATE UI_DESIGNER_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 
 if(IMGUI_UI_DESIGNER_BUILD_TESTS)
     enable_testing()
-    add_executable(ui_core_tests tests/ui_core_tests.cpp)
+    add_executable(ui_core_tests tests/ui_core_tests.cpp designer/DesignerSettings.cpp)
     target_link_libraries(ui_core_tests PRIVATE ui_core)
     target_compile_definitions(ui_core_tests PRIVATE UI_DESIGNER_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
     add_test(NAME ui_core_tests COMMAND ui_core_tests)

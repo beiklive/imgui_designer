@@ -2,8 +2,10 @@
 #include "ui/parser/UIParser.h"
 #include "ui/parser/UISerializer.h"
 #include "ui/i18n/Localization.h"
+#include "designer/DesignerSettings.h"
 #include <cassert>
 #include <filesystem>
+#include <fstream>
 #include <string>
 
 int main() {
@@ -39,4 +41,30 @@ int main() {
     assert(localization.loadDirectory(std::string(UI_DESIGNER_SOURCE_DIR) + "/resources/i18n"));
     localization.setLanguage(ui::Language::English);
     assert(localization.tr("menu.file") == "File");
+
+    const auto componentFile = std::filesystem::temp_directory_path()/"imguiUIDesigner-component.ui.json";
+    const auto hostFile = std::filesystem::temp_directory_path()/"imguiUIDesigner-host.ui.json";
+    std::ofstream component(componentFile); component << R"({"version":1,"root":{"type":"Label","id":"shared-label","text":"Shared"}})"; component.close();
+    std::ofstream host(hostFile);
+    host << nlohmann::json{{"version", 1}, {"root", {{"type", "Box"}, {"children", nlohmann::json::array({nlohmann::json{{"reference", componentFile.string()}}})}}}}.dump();
+    host.close();
+    auto referenced=ui::UIParser{}.load(hostFile.string());
+    assert(referenced.root->children().size()==1);
+    assert(referenced.root->children().front()->reference==componentFile.string());
+    assert(referenced.root->children().front()->type=="Label");
+    auto referenceJson=ui::UISerializer{}.serialize(*referenced.root);
+    auto referencedAgain=ui::UIParser{}.parse(referenceJson);
+    assert(referencedAgain.root->children().size()==1);
+    std::filesystem::remove(componentFile); std::filesystem::remove(hostFile);
+
+    const auto settingsFile = std::filesystem::temp_directory_path()/"imguiUIDesigner-settings-test.json";
+    designer::DesignerSettings settings;
+    settings.language = ui::Language::Chinese;
+    settings.lastDocument = "demo.ui.json";
+    assert(settings.save(settingsFile));
+    designer::DesignerSettings loadedSettings;
+    assert(loadedSettings.load(settingsFile));
+    assert(loadedSettings.language == ui::Language::Chinese);
+    assert(loadedSettings.lastDocument == "demo.ui.json");
+    std::filesystem::remove(settingsFile);
 }

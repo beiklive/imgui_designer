@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "root": {
+    "type": "Box",
+    "id": "reference-demo",
+    "layout": { "mode": "vertical", "width": 1280, "height": 720, "spacing": 12 },
+    "style": { "background": "#F5F6F8", "paddingLeft": 32, "paddingTop": 32 },
+    "children": [
+      { "type": "Label", "id": "title", "text": "JSON reference demo", "layout": { "width": 500, "height": 40 } },
+      { "reference": "../components/label.ui.json" }
+    ]
+  }
+}

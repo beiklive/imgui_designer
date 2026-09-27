@@ -18,4 +18,8 @@ bool UIElement::removeChild(UIElement* child) {
     children_.erase(it);
     return true;
 }
+void UIElement::clearChildren() {
+    for (auto& child : children_) child->parent_ = nullptr;
+    children_.clear();
+}
 }

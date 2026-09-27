@@ -7,3 +7,4 @@
 *.vcxproj*
 *.sln
 imgui.ini
+designer.config.json

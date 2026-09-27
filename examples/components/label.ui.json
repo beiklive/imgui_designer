@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "root": {
+    "type": "Label",
+    "id": "shared-label",
+    "text": "Reusable label component",
+    "layout": { "width": 300, "height": 40 },
+    "style": { "textColor": "#3477C5", "background": "#EEF4FC", "radius": 6, "paddingLeft": 12, "paddingTop": 8 }
+  }
+}

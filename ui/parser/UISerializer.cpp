@@ -17,10 +17,11 @@ nlohmann::json UISerializer::serializeElement(const UIElement& e) const {
     const char* mode = e.layout.mode == LayoutMode::Horizontal ? "horizontal" : e.layout.mode == LayoutMode::Vertical ? "vertical" : e.layout.mode == LayoutMode::Overlay ? "overlay" : "absolute";
     nlohmann::json j = {{"type", e.type}, {"id", e.id}, {"layout", {{"mode", mode}, {"x", e.layout.x}, {"y", e.layout.y}, {"width", e.layout.width}, {"height", e.layout.height}, {"spacing", e.layout.spacing}}},
         {"style", {{"background", colorJson(e.style.background)}, {"border", colorJson(e.style.borderColor)}, {"textColor", colorJson(e.style.textColor)}, {"opacity", e.style.opacity}, {"borderWidth", e.style.borderWidth}, {"radius", e.style.radius}, {"shadow", e.style.shadow}, {"clip", e.style.clip}, {"paddingLeft", e.style.paddingLeft}, {"paddingRight", e.style.paddingRight}, {"paddingTop", e.style.paddingTop}, {"paddingBottom", e.style.paddingBottom}}}};
+    if (!e.reference.empty()) j["reference"] = e.reference;
     if (!e.text.empty() || e.type == "Text") j["text"] = e.text;
     if (!e.source.empty() || e.type == "Image") j["source"] = e.source;
     if (e.type == "Image") j["fit"] = e.fit;
-    if (e.type == "Text") { j["fontSize"] = e.fontSize; j["horizontalAlignment"] = e.horizontalAlignment; j["verticalAlignment"] = e.verticalAlignment; }
+    if (e.type == "Text" || e.type == "Label") { j["fontSize"] = e.fontSize; j["horizontalAlignment"] = e.horizontalAlignment; j["verticalAlignment"] = e.verticalAlignment; }
     if (!e.children().empty()) { j["children"] = nlohmann::json::array(); for (const auto& c : e.children()) j["children"].push_back(serializeElement(*c)); }
     return j;
 }

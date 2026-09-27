@@ -9,12 +9,16 @@ ui::UIElement* DesignCanvas::hitTest(ui::UIElement& e, float x, float y) const {
     for (auto it=e.children().rbegin(); it!=e.children().rend(); ++it) if (auto* hit=hitTest(**it,x,y)) return hit;
     return &e;
 }
-void DesignCanvas::draw(ui::UIRuntime& runtime, ui::ImGuiUIRenderer& renderer, ui::UIElement*& selected, float& zoom, ui::Localization& localization) {
+void DesignCanvas::draw(ui::UIRuntime& runtime, ui::ImGuiUIRenderer& renderer, ui::UIElement*& selected, float& zoom, bool running, bool& deleteRequested, ui::Localization& localization) {
     const auto title = localization.tr("panel.canvas");
     ImGui::Begin(title.c_str());
     const ImVec2 avail = ImGui::GetContentRegionAvail();
     const ImVec2 childOrigin = ImGui::GetCursorScreenPos();
     ImGui::InvisibleButton("CanvasSurface", avail, ImGuiButtonFlags_MouseButtonLeft | ImGuiButtonFlags_MouseButtonMiddle);
+    if (ImGui::BeginPopupContextItem("CanvasContext")) {
+        if (selected && selected->parent() && ImGui::MenuItem(localization.tr("controls.delete").c_str())) deleteRequested = true;
+        ImGui::EndPopup();
+    }
     if (zoom <= 0) { zoom=std::clamp(std::min(avail.x/1280.0f,avail.y/720.0f)*.92f,.1f,3.0f); panX_=panY_=0; }
     const ImVec2 origin{childOrigin.x + (avail.x - 1280*zoom)*.5f + panX_, childOrigin.y + (avail.y - 720*zoom)*.5f + panY_};
     ImDrawList* dl = ImGui::GetWindowDrawList();
@@ -32,7 +36,7 @@ void DesignCanvas::draw(ui::UIRuntime& runtime, ui::ImGuiUIRenderer& renderer, u
         else panning_=false;
     }
     if (ImGui::IsItemHovered() && ImGui::GetIO().MouseWheel != 0 && ImGui::GetIO().KeyCtrl) zoom=std::clamp(zoom+ImGui::GetIO().MouseWheel*.05f,.1f,3.0f);
-    if (ImGui::IsItemClicked(ImGuiMouseButton_Left) && inside && runtime.document().root) {
+    if (!running && ImGui::IsItemClicked(ImGuiMouseButton_Left) && inside && runtime.document().root) {
         const float x=(mouse.x-origin.x)/zoom, y=(mouse.y-origin.y)/zoom;
         selected=hitTest(*runtime.document().root,x,y);
         dragging_=selected && selected->parent() && selected->parent()->layout.mode==ui::LayoutMode::Absolute;
@@ -40,7 +44,7 @@ void DesignCanvas::draw(ui::UIRuntime& runtime, ui::ImGuiUIRenderer& renderer, u
         dragMouse_=mouse;
         if (dragging_) { dragX_=selected->layout.x; dragY_=selected->layout.y; dragW_=selected->layout.width; dragH_=selected->layout.height; }
     }
-    if (dragging_ && ImGui::IsMouseDown(ImGuiMouseButton_Left) && selected) {
+    if (!running && dragging_ && ImGui::IsMouseDown(ImGuiMouseButton_Left) && selected) {
         const float dx=(mouse.x-dragMouse_.x)/zoom, dy=(mouse.y-dragMouse_.y)/zoom;
         if (resizing_) { selected->layout.width=std::max(1.0f,dragW_+dx); selected->layout.height=std::max(1.0f,dragH_+dy); }
         else { selected->layout.x=dragX_+dx; selected->layout.y=dragY_+dy; }
