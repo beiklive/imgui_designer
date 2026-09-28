@@ -62,6 +62,7 @@ add_executable(imguiUIDesigner
     src/main.cpp
     designer/DesignerApplication.cpp
     designer/DesignerSettings.cpp
+    designer/Fonts.cpp
     designer/Canvas/DesignCanvas.cpp
     designer/Hierarchy/HierarchyPanel.cpp
     designer/Inspector/InspectorPanel.cpp

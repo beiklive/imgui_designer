@@ -8,3 +8,4 @@
 *.sln
 imgui.ini
 designer.config.json
+/dist/

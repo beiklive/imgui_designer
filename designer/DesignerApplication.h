@@ -11,6 +11,10 @@
 
 struct GLFWwindow;
 namespace designer {
+// Resource root lookup: IMGUI_DESIGNER_HOME, then the macOS app bundle Resources
+// directory next to the executable, then the build-time source directory.
+const std::filesystem::path& resourceRoot();
+
 struct DesignDocument {
     std::string path;
     ui::UIRuntime runtime;

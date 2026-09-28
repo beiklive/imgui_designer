@@ -1,4 +1,5 @@
 #include "DesignerApplication.h"
+#include "Fonts.h"
 #include "Canvas/DesignCanvas.h"
 #include "Controls/ControlPalette.h"
 #include "Hierarchy/HierarchyPanel.h"
@@ -12,9 +13,30 @@
 #include <backends/imgui_impl_opengl3.h>
 #include <exception>
 #include <cstddef>
+#include <cstdlib>
 #include <filesystem>
+#ifdef __APPLE__
+#include <mach-o/dyld.h>
+#include <climits>
+#endif
 
 namespace designer {
+const std::filesystem::path& resourceRoot() {
+    static const std::filesystem::path root = [] {
+        if (const char* env = std::getenv("IMGUI_DESIGNER_HOME"); env && *env) return std::filesystem::path(env);
+#ifdef __APPLE__
+        char buffer[PATH_MAX] = {};
+        uint32_t size = sizeof(buffer);
+        if (_NSGetExecutablePath(buffer, &size) == 0) {
+            const std::filesystem::path bundle = std::filesystem::path(buffer).parent_path().parent_path() / "Resources";
+            if (std::filesystem::exists(bundle / "resources" / "i18n")) return bundle;
+        }
+#endif
+        return std::filesystem::path(UI_DESIGNER_SOURCE_DIR);
+    }();
+    return root;
+}
+
 namespace {
 ui::UIDocument newDocumentTree() {
     ui::UIDocument document;
@@ -33,9 +55,9 @@ std::string displayName(const std::string& path, size_t index) {
 }
 
 bool DesignerApplication::initialize(const std::string& initialDocument) {
-    configPath_ = std::filesystem::path(UI_DESIGNER_SOURCE_DIR) / "designer.config.json";
+    configPath_ = resourceRoot() / "designer.config.json";
     settings_.load(configPath_);
-    localization_.loadDirectory(std::filesystem::path(UI_DESIGNER_SOURCE_DIR) / "resources" / "i18n");
+    localization_.loadDirectory(resourceRoot() / "resources" / "i18n");
     localization_.setLanguage(settings_.language);
     if (!glfwInit()) { error_=localization_.tr("error.glfw_init"); return false; }
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR,3); glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR,2);
@@ -213,22 +235,7 @@ void DesignerApplication::drawStatusBar() {
 }
 
 void DesignerApplication::loadFonts() {
-    ImGuiIO& io = ImGui::GetIO();
-    const ImWchar* ranges = io.Fonts->GetGlyphRangesChineseSimplifiedCommon();
-    const std::filesystem::path candidates[] = {
-        std::filesystem::path(UI_DESIGNER_SOURCE_DIR) / "resources" / "fonts" / "NotoSansCJK-Regular.ttc",
-#ifdef _WIN32
-        "C:/Windows/Fonts/msyh.ttc", "C:/Windows/Fonts/simhei.ttf",
-#elif defined(__APPLE__)
-        "/System/Library/Fonts/PingFang.ttc",
-#else
-        "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc", "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttf",
-#endif
-    };
-    for (const auto& path : candidates) {
-        if (!std::filesystem::exists(path)) continue;
-        if (io.Fonts->AddFontFromFileTTF(path.string().c_str(), 18.0f, nullptr, ranges)) { io.FontDefault = io.Fonts->Fonts.back(); return; }
-    }
+    loadDesignerFonts(resourceRoot() / "resources" / "fonts");
 }
 
 void DesignerApplication::shutdown() {

@@ -25,6 +25,7 @@ UI 核心、布局、解析器和序列化器不依赖 ImGui；当前 ImGui 只�
 - JSON 保存/加载和 `Ctrl+S` 快捷保存
 - JSON 组件引用：一个文档可以引用另一个 JSON，引用节点会展开到当前树中并在序列化时保留引用路径
 - 中文（简体）和英文 i18n；窗口尺寸、语言和上次文档保存到 `designer.config.json`
+- 字体来自 `resources/fonts/`：`switch_font.ttf` 作主字体（含 CJK），`switch_icons.ttf` 按键图标和 `MaterialIcons-Regular.ttf` 按码位表合并，私用区重叠码位用 `GlyphExcludeRanges` 精确分配
 - 通过 `stb_image` 解码 PNG、JPG 和 JPEG 图片，并在 ImGui/OpenGL 后端缓存纹理
 
 按钮、对话框、Tab、Slider 等更高层控件目前建议使用上述基础节点组合；`ui/components/README.md` 是后续复合组件的扩展约定。
@@ -55,6 +56,14 @@ cmake -S . -B build -DIMGUI_UI_DESIGNER_BUILD_TESTS=ON
 cmake --build build --config Release --parallel 8
 ctest --test-dir build -C Release --output-on-failure
 ```
+
+macOS 上生成可直接双击运行的 `.app`（产物在 `dist/imgui UI Designer.app`）：
+
+```sh
+./scripts/package_macos.sh
+```
+
+打包脚本会把 `resources/` 和 `examples/` 一起放进 `Contents/Resources`；运行时会按 `IMGUI_DESIGNER_HOME` 环境变量、`.app` bundle 的 `Resources` 目录、编译时的源码目录依次查找资源。
 
 单独检查图片解码（参数可以是 `.png`、`.jpg` 或 `.jpeg`）：
 
@@ -147,7 +156,7 @@ tests/         UI 核心和 stb_image 解码冒烟测试
 
 - 当前桌面渲染后端是 ImGui + OpenGL；其他渲染后端接口已隔离但尚未实现。
 - 图片支持 `contain`、`cover` 和 `stretch`；文件不可读时显示占位信息。
-- 文本对齐已支持，自定义字体和自动换行仍在规划中。
+- 文本对齐已支持，自动换行仍在规划中；字体字号固定 18px，未接 UI 缩放。
 - 画布编辑已有选择、缩放、平移、移动/调整尺寸和删除操作；撤销/重做接口尚未覆盖所有属性编辑。
 - 当前没有原生文件选择器，需要在顶部路径输入框中填写加载/保存路径。
 
